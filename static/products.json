@@ -1,0 +1,1376 @@
+[
+  {
+    "id": "VLM-001",
+    "name": "Livia dress",
+    "category": "dress",
+    "price_gbp": 590,
+    "colours": [
+      "pewter"
+    ],
+    "fabric": "jersey",
+    "fit": "relaxed",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "christmas party",
+      "cocktail"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 18,
+    "description": "A relaxed dress in pewter jersey, cut for christmas party and cocktail.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-002",
+    "name": "Vela dress",
+    "category": "dress",
+    "price_gbp": 340,
+    "colours": [
+      "ivory",
+      "midnight"
+    ],
+    "fabric": "velvet",
+    "fit": "relaxed",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "black tie",
+      "cocktail"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A relaxed dress in ivory velvet, cut for black tie and cocktail.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-003",
+    "name": "Isola dress",
+    "category": "dress",
+    "price_gbp": 310,
+    "colours": [
+      "champagne",
+      "emerald"
+    ],
+    "fabric": "jersey",
+    "fit": "column",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "black tie",
+      "winter wedding"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A column dress in champagne jersey.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-004",
+    "name": "Livia dress",
+    "category": "dress",
+    "price_gbp": 410,
+    "colours": [
+      "black",
+      "sapphire"
+    ],
+    "fabric": "jersey",
+    "fit": "relaxed",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "cocktail",
+      "gala"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 14,
+    "description": "A relaxed dress in black jersey, cut for cocktail and gala.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-005",
+    "name": "Vela dress",
+    "category": "dress",
+    "price_gbp": 420,
+    "colours": [
+      "emerald",
+      "oxblood"
+    ],
+    "fabric": "jersey",
+    "fit": "structured",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "black tie",
+      "dinner"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A structured dress in oxblood jersey, cut for black tie and dinner.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-006",
+    "name": "Isola dress",
+    "category": "dress",
+    "price_gbp": 440,
+    "colours": [
+      "ivory",
+      "midnight"
+    ],
+    "fabric": "crepe",
+    "fit": "structured",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "black tie",
+      "engagement party"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A structured dress in ivory crepe.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-007",
+    "name": "Livia dress",
+    "category": "dress",
+    "price_gbp": 490,
+    "colours": [
+      "emerald",
+      "midnight"
+    ],
+    "fabric": "duchess satin",
+    "fit": "relaxed",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "dinner",
+      "engagement party"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A relaxed dress in midnight duchess satin, cut for dinner and engagement party.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-008",
+    "name": "Vela dress",
+    "category": "dress",
+    "price_gbp": 350,
+    "colours": [
+      "ivory",
+      "oxblood"
+    ],
+    "fabric": "crepe",
+    "fit": "draped",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "gala",
+      "winter wedding"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 14,
+    "description": "A draped dress in oxblood crepe.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-009",
+    "name": "Isola dress",
+    "category": "dress",
+    "price_gbp": 390,
+    "colours": [
+      "champagne"
+    ],
+    "fabric": "jersey",
+    "fit": "wrap",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "christmas party",
+      "cocktail"
+    ],
+    "made_to_order": false,
+    "lead_time_days": 3,
+    "description": "A wrap dress in champagne jersey, cut for christmas party and cocktail.",
+    "in_stock": true
+  },
+  {
+    "id": "VLM-010",
+    "name": "Livia dress",
+    "category": "dress",
+    "price_gbp": 590,
+    "colours": [
+      "dusty rose",
+      "midnight"
+    ],
+    "fabric": "sequinned tulle",
+    "fit": "wrap",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "new year's eve",
+      "winter wedding"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 14,
+    "description": "A wrap dress in dusty rose sequinned tulle, cut for new year's eve and winter wedding.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-011",
+    "name": "Vela dress",
+    "category": "dress",
+    "price_gbp": 420,
+    "colours": [
+      "black",
+      "midnight"
+    ],
+    "fabric": "crepe",
+    "fit": "bias-cut",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "christmas party",
+      "gala"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 18,
+    "description": "A bias-cut dress in midnight crepe, cut for christmas party and gala.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-012",
+    "name": "Isola dress",
+    "category": "dress",
+    "price_gbp": 600,
+    "colours": [
+      "ivory",
+      "sapphire"
+    ],
+    "fabric": "crepe",
+    "fit": "wrap",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "gala",
+      "winter wedding"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 14,
+    "description": "A wrap dress in ivory crepe, cut for gala and winter wedding.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-013",
+    "name": "Livia dress",
+    "category": "dress",
+    "price_gbp": 370,
+    "colours": [
+      "champagne",
+      "emerald"
+    ],
+    "fabric": "jersey",
+    "fit": "structured",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "dinner",
+      "new year's eve"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A structured dress in champagne jersey, cut for dinner and new year's eve.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-014",
+    "name": "Vela dress",
+    "category": "dress",
+    "price_gbp": 600,
+    "colours": [
+      "champagne",
+      "midnight"
+    ],
+    "fabric": "duchess satin",
+    "fit": "wrap",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "engagement party",
+      "gala"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 14,
+    "description": "A wrap dress in champagne duchess satin.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-015",
+    "name": "Isola dress",
+    "category": "dress",
+    "price_gbp": 600,
+    "colours": [
+      "emerald",
+      "pewter"
+    ],
+    "fabric": "chiffon",
+    "fit": "structured",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "cocktail",
+      "gala"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 14,
+    "description": "A structured dress in emerald chiffon, cut for cocktail and gala.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-016",
+    "name": "Livia dress",
+    "category": "dress",
+    "price_gbp": 620,
+    "colours": [
+      "champagne",
+      "ivory"
+    ],
+    "fabric": "crepe",
+    "fit": "wrap",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "christmas party",
+      "cocktail"
+    ],
+    "made_to_order": false,
+    "lead_time_days": 3,
+    "description": "A wrap dress in champagne crepe, cut for christmas party and cocktail.",
+    "in_stock": true
+  },
+  {
+    "id": "VLM-017",
+    "name": "Vela dress",
+    "category": "dress",
+    "price_gbp": 520,
+    "colours": [
+      "midnight"
+    ],
+    "fabric": "duchess satin",
+    "fit": "A-line",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "cocktail",
+      "gala"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 14,
+    "description": "A A-line dress in midnight duchess satin, cut for cocktail and gala.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-018",
+    "name": "Isola dress",
+    "category": "dress",
+    "price_gbp": 460,
+    "colours": [
+      "ivory",
+      "pewter"
+    ],
+    "fabric": "velvet",
+    "fit": "draped",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "gala",
+      "new year's eve"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A draped dress in ivory velvet, cut for gala and new year's eve.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-019",
+    "name": "Livia dress",
+    "category": "dress",
+    "price_gbp": 450,
+    "colours": [
+      "midnight"
+    ],
+    "fabric": "silk satin",
+    "fit": "relaxed",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "christmas party",
+      "dinner"
+    ],
+    "made_to_order": false,
+    "lead_time_days": 3,
+    "description": "A relaxed dress in midnight silk satin.",
+    "in_stock": true
+  },
+  {
+    "id": "VLM-020",
+    "name": "Vela dress",
+    "category": "dress",
+    "price_gbp": 330,
+    "colours": [
+      "black",
+      "oxblood"
+    ],
+    "fabric": "crepe",
+    "fit": "draped",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "new year's eve",
+      "winter wedding"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A draped dress in oxblood crepe.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-021",
+    "name": "Isola dress",
+    "category": "dress",
+    "price_gbp": 530,
+    "colours": [
+      "black",
+      "dusty rose"
+    ],
+    "fabric": "velvet",
+    "fit": "draped",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "black tie",
+      "dinner"
+    ],
+    "made_to_order": false,
+    "lead_time_days": 3,
+    "description": "A draped dress in black velvet.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-022",
+    "name": "Livia dress",
+    "category": "dress",
+    "price_gbp": 300,
+    "colours": [
+      "ivory",
+      "midnight"
+    ],
+    "fabric": "jersey",
+    "fit": "structured",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "cocktail",
+      "engagement party"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 14,
+    "description": "A structured dress in midnight jersey, cut for cocktail and engagement party.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-023",
+    "name": "Vela dress",
+    "category": "dress",
+    "price_gbp": 640,
+    "colours": [
+      "dusty rose",
+      "sapphire"
+    ],
+    "fabric": "chiffon",
+    "fit": "draped",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "dinner",
+      "engagement party"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 18,
+    "description": "A draped dress in dusty rose chiffon, cut for dinner and engagement party.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-024",
+    "name": "Isola dress",
+    "category": "dress",
+    "price_gbp": 330,
+    "colours": [
+      "emerald",
+      "pewter"
+    ],
+    "fabric": "crepe",
+    "fit": "column",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "christmas party",
+      "cocktail"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A column dress in pewter crepe.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-025",
+    "name": "Livia dress",
+    "category": "dress",
+    "price_gbp": 360,
+    "colours": [
+      "emerald",
+      "oxblood"
+    ],
+    "fabric": "jersey",
+    "fit": "column",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "dinner",
+      "new year's eve"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A column dress in oxblood jersey, cut for dinner and new year's eve.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-026",
+    "name": "Vela dress",
+    "category": "dress",
+    "price_gbp": 500,
+    "colours": [
+      "emerald",
+      "sapphire"
+    ],
+    "fabric": "wool crepe",
+    "fit": "relaxed",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "gala",
+      "new year's eve"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A relaxed dress in sapphire wool crepe, cut for gala and new year's eve.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-027",
+    "name": "Flavia jumpsuit",
+    "category": "jumpsuit",
+    "price_gbp": 340,
+    "colours": [
+      "champagne",
+      "emerald"
+    ],
+    "fabric": "duchess satin",
+    "fit": "structured",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "cocktail",
+      "gala"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 18,
+    "description": "A structured jumpsuit in emerald duchess satin, cut for cocktail and gala.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-028",
+    "name": "Giada jumpsuit",
+    "category": "jumpsuit",
+    "price_gbp": 380,
+    "colours": [
+      "emerald",
+      "ivory"
+    ],
+    "fabric": "silk satin",
+    "fit": "fitted",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "new year's eve",
+      "winter wedding"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 18,
+    "description": "A fitted jumpsuit in ivory silk satin, cut for new year's eve and winter wedding.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-029",
+    "name": "Serena jumpsuit",
+    "category": "jumpsuit",
+    "price_gbp": 470,
+    "colours": [
+      "black",
+      "midnight"
+    ],
+    "fabric": "jersey",
+    "fit": "relaxed",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "dinner",
+      "winter wedding"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A relaxed jumpsuit in black jersey, cut for dinner and winter wedding.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-030",
+    "name": "Flavia jumpsuit",
+    "category": "jumpsuit",
+    "price_gbp": 380,
+    "colours": [
+      "oxblood"
+    ],
+    "fabric": "wool crepe",
+    "fit": "column",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "gala",
+      "new year's eve"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 14,
+    "description": "A column jumpsuit in oxblood wool crepe, cut for gala and new year's eve.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-031",
+    "name": "Giada jumpsuit",
+    "category": "jumpsuit",
+    "price_gbp": 400,
+    "colours": [
+      "black",
+      "ivory"
+    ],
+    "fabric": "silk satin",
+    "fit": "relaxed",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "black tie",
+      "dinner"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 14,
+    "description": "A relaxed jumpsuit in ivory silk satin, cut for black tie and dinner.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-032",
+    "name": "Serena jumpsuit",
+    "category": "jumpsuit",
+    "price_gbp": 260,
+    "colours": [
+      "pewter",
+      "sapphire"
+    ],
+    "fabric": "duchess satin",
+    "fit": "fitted",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "dinner",
+      "new year's eve"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A fitted jumpsuit in sapphire duchess satin.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-033",
+    "name": "Vela top",
+    "category": "top",
+    "price_gbp": 250,
+    "colours": [
+      "emerald",
+      "oxblood"
+    ],
+    "fabric": "duchess satin",
+    "fit": "draped",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "gala",
+      "new year's eve"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 14,
+    "description": "A draped top in oxblood duchess satin, cut for gala and new year's eve.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-034",
+    "name": "Isola top",
+    "category": "top",
+    "price_gbp": 220,
+    "colours": [
+      "champagne",
+      "midnight"
+    ],
+    "fabric": "sequinned tulle",
+    "fit": "relaxed",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "black tie",
+      "christmas party"
+    ],
+    "made_to_order": false,
+    "lead_time_days": 3,
+    "description": "A relaxed top in champagne sequinned tulle, cut for black tie and christmas party.",
+    "in_stock": true
+  },
+  {
+    "id": "VLM-035",
+    "name": "Livia top",
+    "category": "top",
+    "price_gbp": 230,
+    "colours": [
+      "ivory",
+      "sapphire"
+    ],
+    "fabric": "wool crepe",
+    "fit": "draped",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "gala",
+      "winter wedding"
+    ],
+    "made_to_order": false,
+    "lead_time_days": 3,
+    "description": "A draped top in sapphire wool crepe, cut for gala and winter wedding.",
+    "in_stock": true
+  },
+  {
+    "id": "VLM-036",
+    "name": "Vela top",
+    "category": "top",
+    "price_gbp": 250,
+    "colours": [
+      "oxblood",
+      "pewter"
+    ],
+    "fabric": "crepe",
+    "fit": "draped",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "cocktail",
+      "dinner"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 14,
+    "description": "A draped top in oxblood crepe.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-037",
+    "name": "Isola top",
+    "category": "top",
+    "price_gbp": 260,
+    "colours": [
+      "ivory",
+      "pewter"
+    ],
+    "fabric": "wool crepe",
+    "fit": "structured",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "cocktail",
+      "gala"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 18,
+    "description": "A structured top in pewter wool crepe, cut for cocktail and gala.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-038",
+    "name": "Livia top",
+    "category": "top",
+    "price_gbp": 160,
+    "colours": [
+      "pewter"
+    ],
+    "fabric": "velvet",
+    "fit": "draped",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "gala",
+      "new year's eve"
+    ],
+    "made_to_order": false,
+    "lead_time_days": 3,
+    "description": "A draped top in pewter velvet, cut for gala and new year's eve.",
+    "in_stock": true
+  },
+  {
+    "id": "VLM-039",
+    "name": "Nerina skirt",
+    "category": "skirt",
+    "price_gbp": 300,
+    "colours": [
+      "ivory",
+      "pewter"
+    ],
+    "fabric": "jersey",
+    "fit": "wrap",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "christmas party",
+      "cocktail"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A wrap skirt in ivory jersey, cut for christmas party and cocktail.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-040",
+    "name": "Bianca skirt",
+    "category": "skirt",
+    "price_gbp": 200,
+    "colours": [
+      "oxblood",
+      "pewter"
+    ],
+    "fabric": "chiffon",
+    "fit": "structured",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "gala",
+      "new year's eve"
+    ],
+    "made_to_order": false,
+    "lead_time_days": 3,
+    "description": "A structured skirt in oxblood chiffon, cut for gala and new year's eve.",
+    "in_stock": true
+  },
+  {
+    "id": "VLM-041",
+    "name": "Celeste skirt",
+    "category": "skirt",
+    "price_gbp": 260,
+    "colours": [
+      "midnight",
+      "pewter"
+    ],
+    "fabric": "sequinned tulle",
+    "fit": "A-line",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "cocktail",
+      "winter wedding"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A A-line skirt in pewter sequinned tulle, cut for cocktail and winter wedding.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-042",
+    "name": "Nerina skirt",
+    "category": "skirt",
+    "price_gbp": 300,
+    "colours": [
+      "dusty rose",
+      "sapphire"
+    ],
+    "fabric": "crepe",
+    "fit": "A-line",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "new year's eve",
+      "winter wedding"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 18,
+    "description": "A A-line skirt in sapphire crepe, cut for new year's eve and winter wedding.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-043",
+    "name": "Bianca skirt",
+    "category": "skirt",
+    "price_gbp": 280,
+    "colours": [
+      "champagne",
+      "ivory"
+    ],
+    "fabric": "jersey",
+    "fit": "draped",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "christmas party",
+      "engagement party"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 14,
+    "description": "A draped skirt in champagne jersey, cut for christmas party and engagement party.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-044",
+    "name": "Ester outerwear",
+    "category": "outerwear",
+    "price_gbp": 480,
+    "colours": [
+      "midnight",
+      "oxblood"
+    ],
+    "fabric": "silk satin",
+    "fit": "bias-cut",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "christmas party",
+      "winter wedding"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A bias-cut outerwear in oxblood silk satin, cut for christmas party and winter wedding.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-045",
+    "name": "Fiora outerwear",
+    "category": "outerwear",
+    "price_gbp": 680,
+    "colours": [
+      "emerald",
+      "pewter"
+    ],
+    "fabric": "wool crepe",
+    "fit": "relaxed",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "black tie",
+      "gala"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A relaxed outerwear in emerald wool crepe, cut for black tie and gala.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-046",
+    "name": "Rosalba outerwear",
+    "category": "outerwear",
+    "price_gbp": 590,
+    "colours": [
+      "champagne",
+      "pewter"
+    ],
+    "fabric": "duchess satin",
+    "fit": "structured",
+    "sizes": [
+      "UK 6",
+      "UK 8",
+      "UK 10",
+      "UK 12",
+      "UK 14",
+      "UK 16",
+      "UK 18"
+    ],
+    "occasions": [
+      "gala",
+      "winter wedding"
+    ],
+    "made_to_order": true,
+    "lead_time_days": 21,
+    "description": "A structured outerwear in pewter duchess satin, cut for gala and winter wedding.",
+    "in_stock": false
+  },
+  {
+    "id": "VLM-047",
+    "name": "Bianca silk scarf",
+    "category": "accessory",
+    "price_gbp": 140,
+    "colours": [
+      "champagne",
+      "pewter"
+    ],
+    "fabric": "duchess satin",
+    "fit": null,
+    "sizes": [
+      "one size"
+    ],
+    "occasions": [
+      "black tie",
+      "new year's eve"
+    ],
+    "made_to_order": false,
+    "lead_time_days": 3,
+    "description": "A small piece in pewter duchess satin, cut for black tie and new year's eve.",
+    "in_stock": true
+  },
+  {
+    "id": "VLM-048",
+    "name": "Celeste clutch",
+    "category": "accessory",
+    "price_gbp": 90,
+    "colours": [
+      "emerald",
+      "ivory"
+    ],
+    "fabric": "duchess satin",
+    "fit": null,
+    "sizes": [
+      "one size"
+    ],
+    "occasions": [
+      "black tie",
+      "christmas party"
+    ],
+    "made_to_order": false,
+    "lead_time_days": 3,
+    "description": "A small piece in emerald duchess satin.",
+    "in_stock": true
+  }
+]
