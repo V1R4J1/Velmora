@@ -3,45 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ product.name }}</title>
+  <title>{{ product.name }} | Velmora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-  <header class="site-header">
-    <nav class="container nav" aria-label="Main navigation">
-      <a href="{{ url_for('home') }}">Home</a>
-      <a href="{{ url_for('home') }}#products">Products</a>
-    </nav>
-  </header>
-
+  <header class="site-header"><nav class="container nav" aria-label="Main navigation"><a class="wordmark" href="{{ url_for('home') }}" aria-label="Velmora home">VELMORA<span>✳</span></a><div class="nav-links"><a href="{{ url_for('home') }}#collection">The collection</a><a href="{{ url_for('home') }}#about">Our approach</a></div><a class="nav-action" href="{{ url_for('home') }}#collection">Explore <span aria-hidden="true">↗</span></a></nav></header>
   <main class="container product-page">
-    <p class="back-link"><a href="{{ url_for('home') }}#products">← Back to products</a></p>
-    <div class="product-details">
-      <h1>{{ product.name }}</h1>
-      <p class="price">£{{ product.price_gbp }}</p>
-      <p>{{ product.description }}</p>
-
-      <div class="detail-block">
-        <h2>Choose your options</h2>
-        <label for="colour">Colour</label>
-        <select id="colour" name="colour">
-          {% for colour in product.colours %}<option value="{{ colour }}">{{ colour|capitalize }}</option>{% endfor %}
-        </select>
-        <label for="size">Size</label>
-        <select id="size" name="size">
-          <option value="">Select a size</option>
-          {% for size in product.sizes %}<option value="{{ size }}">{{ size }}</option>{% endfor %}
-        </select>
-      </div>
-
-      <div class="detail-block">
-        <h2>Product details</h2>
-        <p>Made from {{ product.fabric }}{% if product.fit %} with a {{ product.fit }} fit{% endif %}, this {{ product.category }} is suited to occasions such as {{ product.occasions|join(' and ') }}.</p>
-        <p>{{ 'In stock.' if product.in_stock else 'Not currently in stock.' }}{% if product.made_to_order %} Made to order.{% endif %} Lead time: {{ product.lead_time_days }} days.</p>
+    <p class="back-link"><a href="{{ url_for('home') }}#collection">← Back to the collection</a></p>
+    <div class="product-layout">
+      <div class="product-art product-art-large" aria-hidden="true"><span class="art-number">VELMORA / LONDON</span><span class="art-monogram">V</span><span class="art-label">EVENING WEAR<br>MADE FOR THE MOMENT</span></div>
+      <div class="product-details">
+        <p class="eyebrow">The collection / {{ product.category }}</p>
+        <h1>{{ product.name }}</h1>
+        <p class="price">£{{ product.price_gbp }}</p>
+        <p class="product-description">{{ product.description }}</p>
+        <div class="detail-block">
+          <h2>Explore the details</h2>
+          <label for="colour">Colour</label>
+          <select id="colour" name="colour">{% for colour in product.colours %}<option value="{{ colour }}">{{ colour|capitalize }}</option>{% endfor %}</select>
+          <label for="size">Size</label>
+          <select id="size" name="size"><option value="">Select a size</option>{% for size in product.sizes %}<option value="{{ size }}">{{ size }}</option>{% endfor %}</select>
+        </div>
+        <div class="detail-block"><h2>Product details</h2><p>Made from {{ product.fabric }}{% if product.fit %} with a {{ product.fit }} fit{% endif %}, this {{ product.category }} is suited to occasions such as {{ product.occasions|join(' and ') }}.</p><p>{{ 'In stock.' if product.in_stock else 'Not currently in stock.' }}{% if product.made_to_order %} Made to order.{% endif %} Lead time: {{ product.lead_time_days }} days.</p></div>
       </div>
     </div>
   </main>
-
-  <footer class="site-footer"><div class="container">Footer content</div></footer>
+  <footer class="site-footer"><div class="container footer-inner"><a class="footer-wordmark" href="{{ url_for('home') }}">VELMORA<span>✳</span></a><p>Evening wear, thoughtfully made.<br>London, England.</p><a href="{{ url_for('home') }}#collection">The collection ↗</a></div><div class="container footer-bottom"><span>© Velmora</span><span>Made for the moment</span></div></footer>
 </body>
 </html>
