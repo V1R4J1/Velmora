@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+    </nav>
+  </header>
+
+  <main class="container product-page">
+    <p class="back-link"><a href="index.html#products">← Back to products</a></p>
+    <div class="product-layout">
+      <div class="placeholder product-image" aria-label="Image placeholder">Image placeholder</div>
+      <div class="product-details">
+        <h1>Product name</h1>
+        <p class="price">£—</p>
+        <p>Product description goes here.</p>
+
+        <label for="size">Size</label>
+        <select id="size" name="size">
+          <option value="">Select a size</option>
+          <option>UK 6</option>
+          <option>UK 8</option>
+          <option>UK 10</option>
+          <option>UK 12</option>
+          <option>UK 14</option>
+          <option>UK 16</option>
+          <option>UK 18</option>
+        </select>
+        <button class="button add-button" type="button" disabled>Add to bag</button>
+
+        <div class="detail-block">
+          <h2>Details</h2>
+          <p>Fabric and fit information can go here.</p>
+        </div>
+        <div class="detail-block">
+          <h2>Delivery and returns</h2>
+          <p>Delivery and returns information can go here.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">Footer content</div>
+  </footer>
+</body>
+</html>

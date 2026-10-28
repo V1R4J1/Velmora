@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="#products">Products</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container intro">
+      <div>
+        <h1>Page heading</h1>
+        <p>A short introduction can go here.</p>
+        <a class="button" href="#products">View products</a>
+      </div>
+      <div class="placeholder hero-image" aria-label="Image placeholder">Image placeholder</div>
+    </section>
+
+    <section class="container section" id="products" aria-labelledby="products-heading">
+      <h2 id="products-heading">Products</h2>
+      <div class="product-grid">
+        <a class="product-card" href="product.html">
+          <span class="placeholder card-image" aria-hidden="true">Image placeholder</span>
+          <span class="product-name">Product name</span>
+          <span>£—</span>
+        </a>
+        <a class="product-card" href="product.html">
+          <span class="placeholder card-image" aria-hidden="true">Image placeholder</span>
+          <span class="product-name">Product name</span>
+          <span>£—</span>
+        </a>
+        <a class="product-card" href="product.html">
+          <span class="placeholder card-image" aria-hidden="true">Image placeholder</span>
+          <span class="product-name">Product name</span>
+          <span>£—</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">Footer content</div>
+  </footer>
+</body>
+</html>
