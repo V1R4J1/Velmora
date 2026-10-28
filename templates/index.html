@@ -27,21 +27,12 @@
     <section class="container section" id="products" aria-labelledby="products-heading">
       <h2 id="products-heading">Products</h2>
       <div class="product-grid">
-        <a class="product-card" href="{{ url_for('product') }}">
-          <span class="placeholder card-image" aria-hidden="true">Image placeholder</span>
-          <span class="product-name">Product name</span>
-          <span>£—</span>
+        {% for product in products %}
+        <a class="product-card" href="{{ url_for('product_detail', product_id=product.id) }}">
+          <span class="product-name">{{ product.name }}</span>
+          <span>£{{ product.price_gbp }}</span>
         </a>
-        <a class="product-card" href="{{ url_for('product') }}">
-          <span class="placeholder card-image" aria-hidden="true">Image placeholder</span>
-          <span class="product-name">Product name</span>
-          <span>£—</span>
-        </a>
-        <a class="product-card" href="{{ url_for('product') }}">
-          <span class="placeholder card-image" aria-hidden="true">Image placeholder</span>
-          <span class="product-name">Product name</span>
-          <span>£—</span>
-        </a>
+        {% endfor %}
       </div>
     </section>
   </main>
