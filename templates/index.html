@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Home</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
   <header class="site-header">
     <nav class="container nav" aria-label="Main navigation">
-      <a href="index.html" aria-current="page">Home</a>
+      <a href="{{ url_for('home') }}" aria-current="page">Home</a>
       <a href="#products">Products</a>
     </nav>
   </header>
@@ -27,17 +27,17 @@
     <section class="container section" id="products" aria-labelledby="products-heading">
       <h2 id="products-heading">Products</h2>
       <div class="product-grid">
-        <a class="product-card" href="product.html">
+        <a class="product-card" href="{{ url_for('product') }}">
           <span class="placeholder card-image" aria-hidden="true">Image placeholder</span>
           <span class="product-name">Product name</span>
           <span>£—</span>
         </a>
-        <a class="product-card" href="product.html">
+        <a class="product-card" href="{{ url_for('product') }}">
           <span class="placeholder card-image" aria-hidden="true">Image placeholder</span>
           <span class="product-name">Product name</span>
           <span>£—</span>
         </a>
-        <a class="product-card" href="product.html">
+        <a class="product-card" href="{{ url_for('product') }}">
           <span class="placeholder card-image" aria-hidden="true">Image placeholder</span>
           <span class="product-name">Product name</span>
           <span>£—</span>
