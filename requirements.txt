@@ -1,3 +1,18 @@
-# Runtime dependency. Tests use Python's standard library (unittest).
+# Python 3.10+ required. Run from the repository root:
+#   python -m pip install -r requirements.txt
+# First create/activate .venv; see README.md for macOS, Linux and Windows commands.
+
+# Website, templates, sessions and API routes (Werkzeug/Jinja installed by Flask).
 Flask>=3.1.3,<4
+
+# Trusted CA certificates for verified HTTPS requests to Gemini (and OpenAI).
 certifi>=2025.1.31
+
+# Gemini uses Python's standard-library HTTP client; google-genai is not required.
+# Supply GEMINI_API_KEY, VELMORA_AI_ENABLED=1 and VELMORA_AI_PROVIDER=gemini
+# in the server environment, or use: zsh scripts/start-gemini.zsh
+# No key belongs in this file. No python-dotenv/.env loading is required.
+# SQLite and Python tests (unittest) are part of Python's standard library.
+# Node.js is optional for JavaScript tests; there is no npm runtime dependency.
+# Pillow is only needed to regenerate images with scripts/resize-images.py,
+# not to run the website with the committed assets.
