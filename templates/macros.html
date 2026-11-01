@@ -1,0 +1,66 @@
+{% macro price_display(price) -%}
+{% if price.promotion_active %}<span class="promotion-price"><del>£{{ '%g'|format(price.original_price_gbp) }}</del> £{{ '%g'|format(price.price_gbp) }} <small>{{ '%g'|format(price.discount_percentage) }}% less · Demo preview</small></span>{% else %}£{{ '%g'|format(price.price_gbp) }}{% endif %}
+{%- endmacro %}
+{% macro image_sources(path, sizes='(max-width: 700px) 48vw, 28vw') -%}
+srcset="{{ url_for('static', filename='responsive/' ~ path ~ '.320.webp') }} 320w, {{ url_for('static', filename='responsive/' ~ path ~ '.640.webp') }} 640w, {{ url_for('static', filename='responsive/' ~ path ~ '.960.webp') }} 960w{% if path.startswith("campaign/") %}, {{ url_for('static', filename=path) }} {{ 1123 if "mobile" in path else 1536 }}w{% endif %}" sizes="{{ sizes }}"
+{%- endmacro %}
+{% macro product_card(product, show_availability=false, editorial=false, variant=none, colour_link=false) -%}
+{% set variant = variant or product.variant(product.image_colour) %}
+{% set image = variant.images[0].image if variant.images else none %}
+<a class="product-card{% if editorial %} product-card-editorial{% endif %}" href="{{ url_for('product_detail', product_id=product.id, colour=variant.colour_id) if colour_link else url_for('product_detail', product_id=product.id) }}">
+  <div class="product-art">
+    {% if image %}
+    <img class="product-image" src="{{ url_for('static', filename=image) }}" {{ image_sources(image, "(max-width: 700px) 48vw, 28vw") }} alt="{{ product.name }} in {{ variant.colour }}" loading="lazy" width="800" height="1000">
+    {% else %}
+    <div class="product-placeholder" aria-hidden="true">
+      <span class="art-number">{{ product.id }}</span><span class="art-monogram">V</span>
+      <span class="art-label">VELMORA<br>EVENING WEAR</span>
+    </div>
+    {% endif %}
+  </div>
+  <div class="product-meta">
+    <div>
+      <h3>{{ product.name }}</h3>
+      {% if editorial %}<p>{{ variant.colour|capitalize }}</p>{% endif %}
+      {% if not editorial %}<p>{{ product.category|capitalize }} / {{ product.colours|join(', ')|capitalize }} · {{ product.fabric|capitalize }}</p>{% endif %}
+      {% if show_availability %}<p>{{ product.availability_label }}</p>{% endif %}
+      {% if not variant.available %}<p>Currently unavailable in {{ variant.colour|capitalize }}</p>{% endif %}
+    </div>
+    <span>{{ price_display(product_price(product, variant)) }}</span>
+  </div>
+  <span class="card-link">View piece <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></span>
+</a>
+{%- endmacro %}
+
+{% macro bundle_preview(bundle, items, target, total=none) -%}
+<article class="bundle-preview">
+  <div class="bundle-preview-copy"><h2><a href="{{ target }}">{{ bundle.name }}</a></h2>{% if bundle.description %}<p>{{ bundle.description }}</p>{% endif %}{% if total is not none %}<p>Complete selection £{{ total }}</p>{% endif %}<a class="button-primary" href="{{ target }}">Explore the set <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a></div>
+  <div class="bundle-preview-pieces">{% for item in items %}<a href="{{ target }}?item={{ loop.index }}">{% if item.image %}<img src="{{ url_for('static', filename=item.image) }}" {{ image_sources(item.image, "(max-width: 700px) 48vw, 28vw") }} alt="{{ item.product.name }} in {{ item.colour_label }}" width="160" height="200" loading="lazy">{% else %}<span class="preview-placeholder" aria-hidden="true">V</span>{% endif %}<span>{{ item.product.name }}</span><small>{{ item.colour_label }}{% if not item.available %} · Unavailable{% endif %}</small></a>{% endfor %}</div>
+</article>
+{%- endmacro %}
+
+{% macro bundle_showcase(bundle, items, target, total, index=0, pricing=none) -%}
+{% set piece_count = items | sum(attribute='selection.quantity') %}
+{% set count_words = {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five'} %}
+<article class="set-showcase{% if index % 2 == 1 %} set-showcase-reversed{% endif %}">
+  <div class="set-intro">
+      <p class="set-label">The curated sets</p>
+      <{% if index == 0 %}h1{% else %}h2{% endif %}>{{ bundle.name[:-4] if bundle.name.endswith(' Set') else bundle.name }}</{% if index == 0 %}h1{% else %}h2{% endif %}>
+      {% if bundle.description %}<p class="set-description">{{ bundle.description }}</p>{% endif %}
+      <p class="set-pieces">{{ count_words.get(piece_count, piece_count) }} {{ 'piece' if piece_count == 1 else 'pieces' }} · A complete look</p>
+  </div>
+  <div class="set-composition{% if items|length == 1 %} set-composition-single{% endif %}" aria-label="Pieces in {{ bundle.name }}">
+    {% for item in items %}
+    <a class="set-piece{% if loop.first %} set-piece-main{% else %} set-piece-support{% endif %}" href="{{ target }}{{ '&' if '?' in target else '?' }}item={{ loop.index }}">
+      <span class="set-image-frame">{% if item.image %}<img src="{{ url_for('static', filename=item.image) }}" {{ image_sources(item.image, "(max-width: 700px) 48vw, 28vw") }} alt="{{ item.product.name }} in {{ item.colour_label }}" width="800" height="1000"{% if not loop.first or index %} loading="lazy"{% else %} fetchpriority="high"{% endif %}>{% else %}<span class="set-image-placeholder" role="img" aria-label="Photography in {{ item.colour_label }} is unavailable">V</span>{% endif %}</span>
+      <span class="set-caption">{{ item.product.name }} <span>— {{ item.colour_label }}{% if not item.available %} · Unavailable{% endif %}</span></span>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="set-action">
+    <p class="set-price">Complete set <span>—</span> £{{ '%g'|format(total) }}</p>
+    {% if pricing %}{% if pricing.total_savings_gbp %}<p class="promotion-note">Demo preview savings £{{ '%.2f'|format(pricing.total_savings_gbp) }}</p>{% endif %}<p class="promotion-note">{{ pricing.price_change_notice or pricing.pricing_notice }}</p>{% endif %}
+    <a class="set-cta" href="{{ target }}">Explore the Set <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
+  </div>
+</article>
+{%- endmacro %}

@@ -1,0 +1,45 @@
+{
+  "id": "winter-soiree",
+  "name": "Winter Soirée Set",
+  "items": [
+    {
+      "product_id": "VLM-003",
+      "variant_id": "VLM-003--champagne",
+      "colour_id": "champagne",
+      "selected_size": "UK 10",
+      "quantity": 1,
+      "position": 0,
+      "styling_explanation": null
+    },
+    {
+      "product_id": "VLM-047",
+      "variant_id": "VLM-047--champagne",
+      "colour_id": "champagne",
+      "selected_size": "one size",
+      "quantity": 1,
+      "position": 1,
+      "styling_explanation": null
+    },
+    {
+      "product_id": "VLM-048",
+      "variant_id": "VLM-048--emerald",
+      "colour_id": "emerald",
+      "selected_size": "one size",
+      "quantity": 1,
+      "position": 2,
+      "styling_explanation": null
+    }
+  ],
+  "origin": "AI-generated",
+  "description": "Champagne silk and satin, finished with a note of emerald.",
+  "occasion": "formal winter evening",
+  "colour_palette": [
+    "champagne",
+    "emerald"
+  ],
+  "budget_gbp": 600,
+  "created_at": "2026-10-31T00:00:00+00:00",
+  "modified_at": "2026-10-31T00:00:00+00:00",
+  "status": "draft",
+  "schema_version": 1
+}

@@ -1,0 +1,87 @@
+{% from "macros.html" import image_sources %}
+{% extends "base.html" %}
+{% block title %}Create your own set | Velmora{% endblock %}
+{% block description %}Create a considered look from the Velmora collection.{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='builder.css', v='6') }}">{% endblock %}
+{% block main_class %}container studio-page{% endblock %}
+{% block content %}
+<section class="studio" data-studio-app data-stage="create" data-mode="describe">
+  <header class="studio-header">
+    <div class="studio-heading"><p class="studio-kicker">The Velmora styling studio</p><h1>Your look, your way.</h1><p class="studio-intro">A personal edit, shaped around the pieces you love.</p></div>
+    <nav class="studio-choices" aria-label="Choose how to create your set"><button type="button" class="studio-choice" data-mode="describe" aria-pressed="true">Style with AI</button><button type="button" class="studio-choice" data-mode="manual" aria-pressed="false">Create manually</button></nav>
+  </header>
+
+  <p class="studio-global-status" data-global-status role="status" aria-live="polite"></p>
+  <div class="studio-workspace" data-workspace>
+    <section class="studio-create-panel" aria-label="Describe your look">
+      <div class="styling-brief" data-styling-brief>
+        <h2>What are you dressing for?</h2>
+        <div data-anchor-summary></div>
+        <form data-styling-form>
+          <label class="visually-hidden" for="styling-prompt">Describe your look</label>
+          <div class="prompt-box"><textarea id="styling-prompt" name="prompt" maxlength="2000" placeholder="Describe the occasion, colours, mood or pieces you have in mind…" required></textarea><button type="submit" data-ai-generate disabled aria-label="Create your look">Create your look <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></button></div>
+          <div class="prompt-suggestions" aria-label="Example prompts"><button type="button" data-prompt="A winter soirée in champagne and emerald">Winter soirée</button><button type="button" data-prompt="A dramatic black tie look">Black tie</button><button type="button" data-prompt="Soft satin for a winter wedding">Winter wedding</button></div>
+          <details class="brief-options"><summary>Refine your preferences</summary><div class="brief-grid">
+            <label>Occasion <input name="occasion" maxlength="200" placeholder="A winter celebration"></label>
+            <label>Colours <input name="preferred_colours" maxlength="200" placeholder="Champagne, emerald"></label>
+            <label>Budget in GBP <input type="number" name="budget_gbp" min="0" max="1000000" step="0.01" placeholder="Any budget"></label>
+            <label>Size <input name="size" maxlength="200" placeholder="UK 10"></label>
+            <label>Categories <input name="categories" maxlength="200" placeholder="Dress, accessory"></label>
+            <label>Style or materials <input name="aesthetic" maxlength="200" placeholder="Sculptural, soft silk"></label>
+          </div></details>
+          <p class="ai-status" data-ai-status role="status" aria-live="polite"></p>
+          <details class="privacy-note" data-ai-privacy hidden><summary>How your prompt is used</summary><p>Your request and relevant catalogue details are sent to the configured AI provider to create your look. Please avoid sensitive personal information.</p></details>
+        </form>
+      </div>
+      <section class="studio-builder" data-builder hidden aria-label="Choose pieces from the collection">
+        <div class="discovery-heading"><div><p class="studio-kicker">The collection</p><h2>Find your pieces</h2></div><p data-result-count></p></div>
+        <label class="visually-hidden" for="studio-search">Search the collection</label><input id="studio-search" type="search" placeholder="Search by piece, colour or fabric" data-studio-search>
+        <div class="studio-products" data-products></div><p data-no-results hidden>No pieces match your search. Try another colour or name.</p>
+      </section>
+      <div class="editorial-composition" data-editorial aria-label="Velmora campaign inspiration">
+        <figure class="editorial-main"><img src="{{ url_for('static', filename='campaign/winter-soiree.jpg') }}" {{ image_sources('campaign/winter-soiree.jpg', "(max-width: 700px) 48vw, 28vw") }} alt="Velmora Winter Soirée campaign" fetchpriority="high" width="800" height="1000"><figcaption>Winter Soirée <span>01 / 03</span></figcaption></figure>
+        <figure class="editorial-side editorial-texture"><img src="{{ url_for('static', filename='campaign/study-in-texture.jpg') }}" {{ image_sources('campaign/study-in-texture.jpg', "(max-width: 700px) 48vw, 28vw") }} alt="A study in evening textures" loading="lazy" width="800" height="1000"></figure>
+        <figure class="editorial-side"><img src="{{ url_for('static', filename='campaign/velmoran-assembly.jpg') }}" {{ image_sources('campaign/velmoran-assembly.jpg', "(max-width: 700px) 48vw, 28vw") }} alt="The Velmoran Assembly collection" loading="lazy" width="800" height="1000"></figure>
+        <p class="editorial-note">Considered pieces.<br>Unexpected combinations.</p>
+      </div>
+    </section>
+
+    <section class="studio-review" data-review hidden aria-label="Review and edit your look">
+      <div class="review-main">
+        <form class="refinement-bar" data-refinement-form hidden>
+          <label class="visually-hidden" for="refinement-prompt">Refine this look</label><input id="refinement-prompt" name="prompt" maxlength="2000" placeholder="Change something about this look…">
+          <button type="submit" data-refine-submit disabled aria-label="Refine this look"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button>
+        </form>
+        <div class="lookboard-heading"><div><p class="studio-kicker" data-look-kicker>Your personal edit</p><h2>Your look</h2></div><p>Select a piece to personalise it</p></div>
+        <div class="lookboard" data-lookboard></div>
+        <button class="view-all-pieces" type="button" data-view-all hidden>View all pieces</button>
+        <div class="review-actions-inline"><button type="button" class="text-action" data-open-catalogue>Add a piece <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><span class="review-generation-status" data-review-status role="status" aria-live="polite"></span></div>
+      </div>
+
+      <aside class="set-summary" aria-label="Set summary">
+        <div class="summary-heading"><label class="visually-hidden" for="set-name">Set name</label><input id="set-name" aria-label="Set name" maxlength="200" value="The Personal Edit" data-set-name readonly><button type="button" class="icon-action" data-rename title="Rename set" aria-label="Rename set"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 16.5-.8 4.3 4.3-.8L19 8.5 15.5 5 4 16.5Zm9.9-9.9 3.5 3.5"/></svg></button></div>
+        <p class="summary-description" data-description-preview></p>
+        <details class="summary-note-editor"><summary>Add a personal note</summary><label class="visually-hidden" for="set-description">Personal note</label><textarea id="set-description" rows="2" maxlength="1200" data-set-description placeholder="A note about this look"></textarea></details>
+        <details class="summary-preferences"><summary>Styling details</summary><div class="summary-preference-fields"><label>Occasion<input id="set-occasion" maxlength="200" data-set-occasion></label><label>Budget in GBP<input id="set-budget" type="number" min="0" max="1000000" step="0.01" data-set-budget></label><p>A budget sets the maximum for your saved set.</p></div></details>
+        <p class="summary-list-label"><span>In this look</span><span data-piece-count>0 pieces</span></p>
+        <div class="summary-items" data-selection-items></div>
+        <p class="selection-empty" data-selection-empty>Your selected pieces will appear here.</p>
+        <div class="summary-total"><span>Complete look</span><strong data-total>£0.00</strong></div>
+        <p class="promotion-note" data-price-summary aria-live="polite" hidden></p>
+        <p class="promotion-note" data-pricing-notice aria-live="polite"></p>
+        <p class="purchase-guidance">Current catalogue prices. Choose a size for each piece before adding your set to the bag.</p>
+        <div class="selection-actions"><button type="button" class="studio-dark-button" data-add-set>Add set to bag <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></button><button type="button" class="studio-outline-button" data-save-set>Save my set</button><a class="studio-explore-link" data-explore-set hidden>Explore this set <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a></div>
+        <p class="selection-feedback" data-selection-feedback role="status" aria-live="polite"></p>
+      </aside>
+    </section>
+  </div>
+
+  <section class="saved-sets" data-saved-section hidden aria-labelledby="saved-title"><div><p class="studio-kicker">Kept for later</p><h2 id="saved-title">Your saved sets</h2></div><div data-saved-sets></div></section>
+
+  <dialog class="studio-dialog item-dialog" data-item-dialog aria-labelledby="item-editor-title"><div class="dialog-header"><div><p class="studio-kicker">Personalise this piece</p><h2 id="item-editor-title">Edit piece</h2></div><button type="button" class="icon-action" data-close-item aria-label="Close editor"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div data-item-editor></div></dialog>
+  <dialog class="studio-dialog catalogue-dialog" data-catalogue-dialog aria-labelledby="catalogue-dialog-title"><div class="dialog-header"><div><p class="studio-kicker">The collection</p><h2 id="catalogue-dialog-title">Add a piece</h2></div><button type="button" class="icon-action" data-close-catalogue aria-label="Close collection"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><label class="visually-hidden" for="studio-dialog-search">Search the collection</label><input id="studio-dialog-search" type="search" placeholder="Search by piece, colour or fabric" data-studio-search><div class="studio-products" data-products></div><p data-no-results hidden>No pieces match your search. Try another colour or name.</p></dialog>
+  <dialog class="studio-dialog all-pieces-dialog" data-all-dialog aria-labelledby="all-pieces-title"><div class="dialog-header"><div><p class="studio-kicker">Your complete edit</p><h2 id="all-pieces-title">All pieces</h2></div><button type="button" class="icon-action" data-close-all aria-label="Close all pieces"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="all-pieces-grid" data-all-pieces></div></dialog>
+  <noscript><p>The styling studio needs JavaScript to keep your selections together. You can still explore the <a href="{{ url_for('bundle_collection') }}">curated sets</a>.</p></noscript>
+</section>
+{% endblock %}
+{% block scripts %}<script type="module" src="{{ url_for('static', filename='builder.js', v='6') }}" defer></script>{% endblock %}

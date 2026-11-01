@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% from "macros.html" import bundle_showcase %}
+{% block title %}The curated sets | Velmora{% endblock %}
+{% block styles %}<link rel="stylesheet" href="{{ url_for('static', filename='sets.css') }}">{% endblock %}
+{% block main_class %}container sets-page{% endblock %}
+{% block content %}
+  <p class="sets-create"><a class="button-secondary" href="/sets/create">Create Your Own Set <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a></p>
+  {% for bundle in bundles %}
+    {{ bundle_showcase(bundle.definition, bundle['items'], bundle.url, bundle.total, loop.index0, bundle.pricing) }}
+  {% else %}
+    <div class="sets-empty"><h1>The curated sets</h1><p>Our next edit is coming soon.</p></div>
+  {% endfor %}
+{% endblock %}

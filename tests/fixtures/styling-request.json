@@ -1,0 +1,9 @@
+{
+  "prompt": "An elegant outfit for a formal winter evening, in champagne and dark green, within £600.",
+  "occasion": "formal winter evening",
+  "preferred_colours": ["champagne", "emerald"],
+  "budget_gbp": 600,
+  "size": "UK 10",
+  "season": "winter",
+  "aesthetic": "elegant"
+}

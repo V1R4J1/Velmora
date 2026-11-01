@@ -1,0 +1,15 @@
+# Mobile presentation refinement
+
+The refinement uses the existing Flask routes, Jinja templates and catalogue, studio and bag handlers. `static/responsive.css` loads after the existing page styles and contains the shared icon, action, spacing and responsive presentation rules. `static/navigation.js` controls the native mobile navigation dialog, scroll locking, focus restoration and in-page destinations. No backend, API, catalogue prices or variant definitions changed in this work.
+
+Emoji asterisks and directional arrows were replaced in the templates and generated studio markup with monochrome SVGs. Primary set and purchase actions use charcoal fills; supporting actions use outlines, while breadcrumbs and minor links retain text treatments. Mobile sets and generated looks use compact compositions. Product descriptions now sit in the existing detail accordion after the purchase controls.
+
+Responsive WebP derivatives are stored in `static/responsive`, preserving the original image paths and associations. The initial campaign image retains high fetch priority, and lower imagery remains lazy loaded. To regenerate assets after adding catalogue photography, install Pillow in a development environment and run `python scripts/resize-images.py`. Pillow is not a runtime dependency. Original assets remain available for gallery enlargement.
+
+## Verification
+
+Rendered pages were checked in headless Chrome and Playwright WebKit at 320, 375, 390, 430, 768 and 1440 pixels wide, with an 844-pixel viewport height. The homepage, curated sets, catalogue search, Styling Studio, standalone product page, bundled product page and bag returned successfully without horizontal overflow or JavaScript errors. Mobile headers measured 64 pixels with the wordmark centred in the viewport. Screenshots of mobile, tablet and desktop pages were visually inspected. Native safe-area insets are handled in CSS; physical iPhone Safari and its browser chrome were not available for testing.
+
+Browser interactions checked drawer opening, Escape dismissal and focus return, in-page collection navigation, manual studio creation, the piece editor, product size selection and Add to Bag, bag removal, catalogue searching and filter expansion. A fixture-generated three-piece look checked prompt collapse, the refinement control, size editing and Add Set to Bag. A deliberately delayed semantic-search response confirmed the empty state stays hidden while AI results are pending. The local live AI provider is disabled, so provider responses for those browser checks were fixtures; the existing backend provider tests also pass.
+
+The existing Python suite passes all 79 tests, and the JavaScript suite passes all 19 tests. Run these with `.venv/bin/python -m unittest discover -s tests -q` and `node --test tests/*.test.mjs`. A source scan found no emoji asterisks, emoji-range pictographs, variation selectors or arrow-up-right characters in the frontend sources; directional controls are SVGs. `git diff --check` passes.

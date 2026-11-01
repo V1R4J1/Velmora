@@ -1,0 +1,98 @@
+{% from "macros.html" import price_display %}
+{% from "macros.html" import image_sources %}
+<div data-product-state data-product-id="{{ product.id }}" data-colour="{{ selection.selection.colour_id }}"{% if bundle %} data-bundle-colours="{{ bundle.colours }}" data-bundle-sizes="{{ bundle.sizes }}" data-item-index="{{ bundle.selected }}"{% endif %}>
+  <nav class="product-breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ url_for('home') }}">Home</a><span aria-hidden="true">/</span><a href="{{ url_for('catalogue') }}">Collection</a><span aria-hidden="true">/</span><span aria-current="page">{{ product.name }}</span>
+  </nav>
+
+  {% if bundle %}
+  <nav class="bundle-navigator" aria-label="Pieces in {{ bundle.name }}">
+    <div class="bundle-heading"><span>Part of the</span><span class="bundle-name">{{ bundle.name }}</span></div>
+    <div class="bundle-items">
+      {% for item in bundle['items'] %}
+      <a class="bundle-item" data-product-link href="{{ bundle.links[loop.index0] }}"{% if loop.index0 == bundle.selected %} aria-current="true"{% endif %}>
+        {% if item.image %}<img src="{{ url_for('static', filename=item.image) }}" {{ image_sources(item.image, "90px") }} alt="" width="42" height="54">{% else %}<span class="bundle-placeholder" aria-hidden="true">V</span>{% endif %}
+        <span><strong>{{ item.product.name }}</strong><small>{{ item.colour_label }}{% if not item.available %} · Unavailable{% endif %}</small></span>
+      </a>
+      {% endfor %}
+    </div>
+    {% if bundle.customised %}<span class="bundle-personal-note">Your selection</span>{% endif %}
+  </nav>
+  {% endif %}
+
+  {% set displayed = selection.variant.images[0] if selection.variant and selection.variant.images else (product.images[0] if product.images else none) %}
+  <div class="product-layout" data-product-gallery>
+    <section class="product-gallery" aria-label="{{ product.name }} product images">
+      <div class="product-art product-art-large" data-gallery-stage tabindex="0" aria-label="Product photograph. Use left and right arrows to explore available photographs.">
+        {% if product.images %}
+          {% for image in product.images %}
+          <img class="product-image" data-product-image data-colour="{{ image.colour }}" data-photo-index="{{ loop.index0 }}" src="{{ url_for('static', filename=image.image) }}" {{ image_sources(image.image, "(max-width: 700px) 100vw, 55vw") }} alt="{{ product.name }} in {{ image.colour }}"{% if image != displayed %} hidden{% endif %} width="800" height="1000"{% if image == displayed %} fetchpriority="high"{% else %} loading="lazy"{% endif %}>
+          {% endfor %}
+        {% else %}
+          <div class="product-placeholder" role="img" aria-label="Product photography is not available"><span class="art-monogram">V</span></div>
+        {% endif %}
+        {% if displayed %}<button class="gallery-zoom" type="button" data-gallery-zoom aria-label="Enlarge product photograph"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/></svg></button>{% endif %}
+      </div>
+      {% if product.images|length > 1 %}
+      <div class="gallery-thumbnails" aria-label="Available photographs">
+        {% for image in product.images %}
+        {% set image_variant = product.variant(image.colour) %}
+        <a class="gallery-thumbnail" data-gallery-trigger data-product-link data-photo-index="{{ loop.index0 }}" data-colour="{{ image_variant.colour_id }}" href="{{ colour_links[image_variant.colour_id] }}" aria-label="View {{ product.name }} in {{ image.colour }}"{% if image == displayed %} aria-current="true"{% endif %}>
+          <img src="{{ url_for('static', filename=image.image) }}" {{ image_sources(image.image, "90px") }} alt="" width="48" height="60" loading="lazy">
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <p class="image-colour-note" data-image-colour-note{% if selection.variant and selection.variant.images %} hidden{% endif %}>{% if not product.images %}Images for this piece are not available yet.{% elif not selection.variant %}This colourway is no longer available. Photograph shown in {{ displayed.colour }}.{% else %}Photograph shown in {{ displayed.colour }}. Photography in {{ selected_colour|lower }} is not available yet.{% endif %}</p>
+      {% if displayed and '-generated.png' in displayed.image %}<p class="image-colour-note">Colour shown as an AI-generated illustration.</p>{% endif %}
+      <dialog class="gallery-dialog" data-gallery-dialog aria-label="Enlarged product photograph"><button type="button" data-close-zoom aria-label="Close enlarged photograph">Close <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button><img data-zoom-image alt=""></dialog>
+    </section>
+
+    <section class="product-details" aria-labelledby="product-title">
+      <h1 id="product-title">{{ product.name }}</h1>
+      <p class="product-price">{{ price_display(selection.pricing) }}</p>
+      {% if selection.pricing.preview_only %}<p class="promotion-note">Demo preview only. Your bag uses the ordinary catalogue price.</p>{% endif %}
+
+      <div class="product-colours">
+        <p class="selection-heading">Colour <span data-selected-colour>{{ selected_colour }}</span></p>
+        <div class="colour-options" role="group" aria-label="Choose a colour">
+          {% for variant in product.variants %}
+          <a class="colour-option" data-product-link href="{{ colour_links[variant.colour_id] }}" aria-label="{{ variant.colour|capitalize }}{% if not variant.available %}, currently unavailable{% endif %}"{% if variant.colour_id == selection.selection.colour_id %} aria-current="true"{% endif %}>
+            <span class="colour-swatch colour-{{ variant.colour_id }}{% if not variant.available %} colour-unavailable{% endif %}" aria-hidden="true"></span><span>{{ variant.colour|capitalize }}</span>
+          </a>
+          {% endfor %}
+        </div>
+        {% if not selection.available %}<p class="selection-unavailable" role="status">{{ selected_colour }} is currently unavailable. Please choose another available colour.</p>{% endif %}
+      </div>
+
+      <form class="purchase-form" method="post" action="{{ url_for('shopping.add_to_bag') }}" data-bag-form>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="product_id" value="{{ product.id }}">
+        <input type="hidden" name="variant_id" value="{{ selection.selection.variant_id }}">
+        <input type="hidden" name="colour_id" value="{{ selection.selection.colour_id }}">
+        <input type="hidden" name="quantity" value="{{ selection.selection.quantity }}">
+        {% if product.one_size %}
+        <input type="hidden" name="selected_size" value="one size"><p class="one-size-note">One size</p>
+        {% else %}
+        <div class="size-label"><label for="size">Size</label><span>UK sizing</span></div>
+        <select id="size" name="selected_size" required data-product-size aria-label="Choose a size">
+          <option value=""{% if not selection.selection.selected_size %} selected{% endif %}>Select your size</option>
+          {% for size in product.sizes %}<option value="{{ size }}"{% if size == selection.selection.selected_size %} selected{% endif %}>{{ size }}</option>{% endfor %}
+        </select>
+        {% endif %}
+        {% if selection.selection.quantity > 1 %}<p class="one-size-note">Quantity {{ selection.selection.quantity }}</p>{% endif %}
+        <button class="add-to-bag" type="submit"{% if not selection.available %} disabled{% endif %}>{% if selection.available %}Add to Bag <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg>{% else %}Currently unavailable{% endif %}</button>
+        <p class="bag-feedback" data-bag-feedback role="status" aria-live="polite" hidden></p>
+      </form>
+
+      <p class="making-note">{% if selection.availability == 'in_stock' %}Ready to dispatch from our London studio.<br>UK delivery in 3–5 days.{% elif selection.availability == 'made_to_order' %}Made to order in London. Allow {{ product.lead_time_days }} days for making.<br>UK delivery in 3–5 days after making.{% else %}Making and delivery estimates will return with availability.{% endif %}</p>
+      <div class="product-information">
+        <details><summary>Details &amp; Fit <span aria-hidden="true">+</span></summary><p class="product-description">{{ product.description }}</p><p>{{ product.fabric|capitalize }}{% if product.fit %}, with a {{ product.fit }} fit{% endif %}. Designed for {{ product.occasions|join(' and ') }}.{% if not product.one_size %} Available in {{ product.sizes|join(', ') }}.{% endif %}</p><p class="product-reference">REF. {{ product.id }}</p></details>
+        <details><summary>Making &amp; Delivery <span aria-hidden="true">+</span></summary><p>{% if selection.availability == 'in_stock' %}This piece is in stock and ready to dispatch from our London studio. UK delivery takes 3–5 days and EU delivery takes 5–8 days.{% elif selection.availability == 'made_to_order' %}Made to order in our London studio. Please allow {{ product.lead_time_days }} days for making, then 3–5 days for UK delivery or 5–8 days for EU delivery.{% else %}This colourway is currently unavailable. Delivery estimates will be available when it returns.{% endif %}</p></details>
+        <details><summary>Returns <span aria-hidden="true">+</span></summary><p>Return within 14 days, unworn and with tags attached. Made-to-order pieces in a non-standard size cannot be returned.</p></details>
+      </div>
+      {% if bundle %}<p class="set-context">{{ bundle.name }} <span>Complete selection £{{ '%g'|format(bundle.total) }}</span></p>{% if bundle.pricing.total_savings_gbp %}<p class="promotion-note">Demo preview savings £{{ '%.2f'|format(bundle.pricing.total_savings_gbp) }}</p>{% endif %}<p class="promotion-note">{{ bundle.pricing.price_change_notice or bundle.pricing.pricing_notice }}</p>{% elif related_bundles %}{% for related in related_bundles %}<p class="product-bundle-link"><a href="{{ related.url }}">Explore {{ related.name }} <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a></p>{% endfor %}{% endif %}
+      <p class="product-bundle-link"><a data-build-look href="{{ url_for('create_set', mode='describe', product=product.id, variant=selection.selection.variant_id, size=selection.selection.selected_size or '') }}">Build a Look Around This Piece <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a></p>
+    </section>
+  </div>
+</div>

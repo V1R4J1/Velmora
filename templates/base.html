@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="{% block description %}Explore considered evening wear, designed in London by Velmora.{% endblock %}">
+  <title>{% block title %}Velmora | Evening wear, thoughtfully made{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Optional web fonts must not delay the local page render. -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  {% block styles %}{% endblock %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='responsive.css') }}">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main navigation">
+      <button class="menu-toggle icon-button" type="button" data-menu-open aria-label="Open navigation" aria-controls="mobile-navigation" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+      <div class="nav-links">
+        <a href="{{ url_for('home') }}#collection">Collection</a>
+        <a href="{{ url_for('bundle_collection') }}">The sets</a>
+        <a href="{{ url_for('home') }}#about">Our approach</a>
+      </div>
+      <a class="wordmark" href="{{ url_for('home') }}" aria-label="Velmora home">VELMORA<svg class="brand-symbol" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M3.34 7l17.32 10M3.34 17 20.66 7"/></svg></a>
+      <div class="nav-actions">
+      <a class="nav-action nav-search-action" href="{{ url_for('catalogue') }}" aria-label="Search the collection"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.6"/><path d="m16 16 4.3 4.3"/></svg><span class="nav-label">Search</span></a>
+      <a class="nav-action bag-link" href="{{ url_for('shopping.bag') }}" aria-label="Shopping bag"><svg class="icon bag-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7h14l1 14H4L5 7Zm3 0V6a4 4 0 0 1 8 0v1"/></svg><span class="nav-label">Bag</span><span class="bag-count" data-bag-count>{{ bag_count }}</span></a>
+      </div>
+    </nav>
+    <div class="demo-campaign-bar">
+      <form class="container demo-campaign-control" action="/demo/black-friday" method="post" data-demo-campaign>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="return_to" value="{{ demo_return_to }}">
+        <input type="hidden" name="enabled" value="{{ 'false' if black_friday_demo_enabled else 'true' }}">
+        <span class="demo-campaign-label" id="demo-campaign-label">Black Friday demo</span>
+        <button class="demo-campaign-switch" type="submit" role="switch" aria-labelledby="demo-campaign-label" aria-describedby="demo-campaign-note" aria-checked="{{ 'true' if black_friday_demo_enabled else 'false' }}" data-demo-campaign-switch>
+          <span class="demo-campaign-track" aria-hidden="true"></span><span data-demo-campaign-state>{{ 'On' if black_friday_demo_enabled else 'Off' }}</span>
+        </button>
+        <span class="demo-campaign-note" id="demo-campaign-note">Preview prices only</span>
+        <span class="demo-campaign-feedback" role="status" data-demo-campaign-feedback></span>
+      </form>
+    </div>
+  </header>
+
+  <dialog class="navigation-drawer" id="mobile-navigation" aria-label="Main navigation">
+    <div class="drawer-heading"><span class="drawer-label">VELMORA</span><button type="button" class="icon-button" data-menu-close aria-label="Close navigation"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <nav aria-label="Mobile navigation"><a href="{{ url_for('home') }}#collection">Collection</a><a href="{{ url_for('bundle_collection') }}">The Sets</a><a href="{{ url_for('create_set') }}">Create Your Own Set</a><a href="{{ url_for('home') }}#about">Our Approach</a><a href="{{ url_for('catalogue') }}">Search</a><a href="{{ url_for('catalogue') }}">Shop All</a></nav>
+    <p>Evening wear, thoughtfully made.</p>
+  </dialog>
+  <main id="main-content" class="{% block main_class %}{% endblock %}">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="footer-wordmark" href="{{ url_for('home') }}" aria-label="Velmora home">VELMORA<svg class="brand-symbol" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M3.34 7l17.32 10M3.34 17 20.66 7"/></svg></a>
+      <p>Evening wear, thoughtfully made.<br>London, England.</p>
+      <a href="#top">Back to top <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></a>
+    </div>
+    <div class="container footer-bottom"><span>© Velmora</span><span>Made for the moment</span></div>
+  </footer>
+  <script src="{{ url_for('static', filename='navigation.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='demo-campaign.js') }}" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

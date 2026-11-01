@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% from "macros.html" import product_card %}
+{% block title %}Search the collection | Velmora{% endblock %}
+{% block description %}Discover considered Velmora evening wear by name, colour, fabric, category or occasion.{% endblock %}
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='catalogue.css', v='7') }}">
+{% endblock %}
+{% block main_class %}container search-page{% endblock %}
+{% block content %}
+  <form class="search-interface" method="get" action="{{ url_for('catalogue') }}" role="search" data-live-search data-csrf="{{ csrf_token() }}" data-ai-available="{{ 'true' if ai_available else 'false' }}">
+    <div class="search-intro">
+      <h1>What are you looking for?</h1>
+
+      <div class="search-field-shell">
+        <label class="visually-hidden" for="q">Search pieces, colours, fabrics or occasions</label>
+        <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24">
+          <circle cx="10.8" cy="10.8" r="6.6"></circle>
+          <path d="m16 16 4.3 4.3"></path>
+        </svg>
+        <input id="q" name="q" type="search" placeholder="Search pieces, colours, fabrics or occasions..." value="{{ filters.q }}" autocomplete="off" role="combobox" aria-autocomplete="list" aria-haspopup="listbox" aria-controls="search-suggestions" aria-expanded="false" data-search-input>
+        <button class="clear-search" type="button" aria-label="Clear search"{% if not filters.q %} hidden{% endif %} data-clear-search>
+          <svg aria-hidden="true" viewBox="0 0 20 20"><path d="m5 5 10 10M15 5 5 15"></path></svg>
+        </button>
+        <button class="visually-hidden" type="submit">View matching pieces</button>
+      </div>
+      <div class="search-suggestions" id="search-suggestions" role="listbox" aria-label="Search suggestions" hidden data-search-suggestions></div>
+
+      <div class="search-ai-note" data-ai-note>
+        {% if ai_available %}
+          <span>Some searches may use AI to help find relevant pieces.</span>
+          <details><summary>Learn more</summary><p>When enabled, your search description and relevant catalogue details are sent to Velmora’s configured AI provider. Please avoid sensitive personal information.</p></details>
+        {% else %}
+          <span>Search the collection by name, colour, fabric or occasion.</span>
+        {% endif %}
+      </div>
+
+      <nav class="suggested-searches" aria-label="Suggested searches">
+        <span>Suggested searches</span>
+        {% for term in ['Silk & satin', 'Ivory eveningwear', 'Winter occasions', 'Black tie', 'Velvet'] %}
+          <a href="{{ url_for('catalogue', q=term) }}" data-search-term>{{ term }}</a>
+        {% endfor %}
+      </nav>
+    </div>
+
+    <div class="results-toolbar">
+      <p class="catalogue-count" aria-live="polite" aria-atomic="true" data-product-count>{% if initial_search_pending %}Updating matches{% else %}{{ products|length }} {{ 'piece' if products|length == 1 else 'pieces' }}{% endif %}</p>
+      <div class="search-feedback{% if initial_search_pending %} is-active{% endif %}" data-search-feedback>
+        <p class="search-status" role="status" aria-live="polite" aria-atomic="true" data-search-status>{% if initial_search_pending %}Finding pieces for you…{% endif %}</p>
+        <button class="search-retry" type="button" data-search-retry hidden>Try again</button>
+      </div>
+      <p class="search-interpretation" data-search-interpretation hidden></p>
+      <button class="filters-toggle" type="button" aria-expanded="{{ 'true' if active_filters or filters.errors else 'false' }}" aria-controls="search-filters" data-filters-toggle>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7h9m4 0h3M4 17h3m4 0h9"></path><circle cx="15" cy="7" r="2"></circle><circle cx="9" cy="17" r="2"></circle></svg>
+        <span>Filters</span>
+        <span class="filter-active-mark" aria-label="Filters applied" data-filter-active{% if not active_filters %} hidden{% endif %}></span>
+      </button>
+    </div>
+
+    <div class="search-filters" id="search-filters"{% if not active_filters and not filters.errors %} hidden{% endif %} data-filter-panel>
+      <div class="filter-field">
+        <label for="category">Category</label>
+        <select id="category" name="category"{% if filters.errors.category %} aria-invalid="true" aria-describedby="category-error"{% endif %}>
+          <option value="">All categories</option>
+          {% if filters.errors.category %}<option value="{{ filters.category }}" selected>{{ filters.category }}</option>{% endif %}
+          {% for item in categories %}
+          <option value="{{ item }}"{% if filters.category == item %} selected{% endif %}>{{ {'accessory': 'Accessories', 'dress': 'Dresses', 'jumpsuit': 'Jumpsuits', 'outerwear': 'Outerwear', 'skirt': 'Skirts', 'top': 'Tops'}.get(item, item|capitalize) }}</option>
+          {% endfor %}
+        </select>
+        {% if filters.errors.category %}<p class="filter-error" id="category-error" data-filter-error>{{ filters.errors.category }}</p>{% endif %}
+      </div>
+      <div class="filter-field">
+        <label for="colour">Colour</label>
+        <select id="colour" name="colour"{% if filters.errors.colour %} aria-invalid="true" aria-describedby="colour-error"{% endif %}>
+          <option value="">All colours</option>
+          {% if filters.errors.colour %}<option value="{{ filters.colour }}" selected>{{ filters.colour }}</option>{% endif %}
+          {% for value, label in colour_options %}
+          <option value="{{ value }}"{% if filters.colour == value %} selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+        </select>
+        {% if filters.errors.colour %}<p class="filter-error" id="colour-error" data-filter-error>{{ filters.errors.colour }}</p>{% endif %}
+      </div>
+      <div class="filter-field">
+        <label for="fabric">Fabric</label>
+        <select id="fabric" name="fabric"{% if filters.errors.fabric %} aria-invalid="true" aria-describedby="fabric-error"{% endif %}>
+          <option value="">All fabrics</option>
+          {% if filters.errors.fabric %}<option value="{{ filters.fabric }}" selected>{{ filters.fabric }}</option>{% endif %}
+          {% for item in fabrics %}
+          <option value="{{ item }}"{% if filters.fabric == item %} selected{% endif %}>{{ item|title }}</option>
+          {% endfor %}
+        </select>
+        {% if filters.errors.fabric %}<p class="filter-error" id="fabric-error" data-filter-error>{{ filters.errors.fabric }}</p>{% endif %}
+      </div>
+      <div class="filter-field">
+        <label for="min_price">Minimum price</label>
+        <div class="price-input"><span aria-hidden="true">£</span><input id="min_price" name="min_price" type="number" min="0" step="0.01" placeholder="0" value="{{ filters.min_price }}"{% if filters.errors.min_price %} aria-invalid="true" aria-describedby="min_price-error"{% endif %}></div>
+        {% if filters.errors.min_price %}<p class="filter-error" id="min_price-error" data-filter-error>{{ filters.errors.min_price }}</p>{% endif %}
+      </div>
+      <div class="filter-field">
+        <label for="max_price">Maximum price</label>
+        <div class="price-input"><span aria-hidden="true">£</span><input id="max_price" name="max_price" type="number" min="0" step="0.01" placeholder="Any" value="{{ filters.max_price }}"{% if filters.errors.max_price %} aria-invalid="true" aria-describedby="max_price-error"{% endif %}></div>
+        {% if filters.errors.max_price %}<p class="filter-error" id="max_price-error" data-filter-error>{{ filters.errors.max_price }}</p>{% endif %}
+      </div>
+      <div class="filter-field">
+        <label for="availability">Availability</label>
+        <select id="availability" name="availability"{% if filters.errors.availability %} aria-invalid="true" aria-describedby="availability-error"{% endif %}>
+          <option value="">All availability</option>
+          {% if filters.errors.availability %}<option value="{{ filters.availability }}" selected>{{ filters.availability }}</option>{% endif %}
+          {% for value, label in [('in_stock', 'In stock'), ('made_to_order', 'Made to order'), ('unavailable', 'Currently unavailable')] %}
+          <option value="{{ value }}"{% if filters.availability == value %} selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+        </select>
+        {% if filters.errors.availability %}<p class="filter-error" id="availability-error" data-filter-error>{{ filters.errors.availability }}</p>{% endif %}
+      </div>
+      <button class="apply-filters" type="submit">Apply filters</button>
+      <button class="clear-filters" type="button" data-clear-filters>Clear all</button>
+    </div>
+  </form>
+
+  {% if filters.errors %}
+    <div class="filter-errors" role="alert" data-filter-error-summary>Please adjust the highlighted filters to see matching pieces.</div>
+  {% endif %}
+
+  <section class="search-results" aria-label="Search results">
+    <div class="product-grid{% if initial_search_pending %} is-updating{% endif %}" data-product-results aria-busy="{{ 'true' if initial_search_pending else 'false' }}">
+      {% for product in products %}{{ product_card(product, editorial=true, variant=selected_variants[product.id], colour_link=filters.q|length > 0 and filters.q|lower in selected_variants[product.id].colour|lower) }}{% endfor %}
+    </div>
+    <div class="search-skeleton-grid" aria-hidden="true" data-search-skeleton{% if not initial_search_pending or products %} hidden{% endif %}>{% for _ in range(8) %}<div class="search-skeleton-card"><span></span><i></i><i></i></div>{% endfor %}</div>
+    <div class="catalogue-empty"{% if (products or initial_search_pending) and not filters.errors %} hidden{% endif %} data-empty-state>
+      {% if filters.errors %}
+        <h2 data-empty-heading>Adjust your filters</h2>
+        <p data-empty-copy>Correct the highlighted values to see pieces that match.</p>
+      {% else %}
+        <h2 data-empty-heading>We couldn’t find quite the right piece.</h2>
+        <p data-empty-copy>Try another description, explore a different shade or browse the collection.</p>
+        <div class="empty-actions">
+          <button class="empty-clear" type="button" data-empty-clear>Clear search</button>
+          <button class="empty-retry" type="button" data-empty-retry hidden>Try again</button>
+          <a class="button-secondary" href="{{ url_for('catalogue') }}">Explore the collection <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a>
+        </div>
+      {% endif %}
+      <div class="empty-alternatives" data-empty-alternatives></div>
+    </div>
+  </section>
+{% endblock %}
+{% block scripts %}
+  <script src="{{ url_for('static', filename='catalogue-search.js', v='7') }}" defer></script>
+{% endblock %}

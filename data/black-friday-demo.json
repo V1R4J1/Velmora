@@ -1,0 +1,15 @@
+{
+  "id": "black-friday-demo",
+  "preview_only": true,
+  "discounts": {
+    "VLM-003--champagne": 20,
+    "VLM-013--champagne": 15,
+    "VLM-020--oxblood": 20,
+    "VLM-025--oxblood": 15,
+    "VLM-027--champagne": 15,
+    "VLM-040--oxblood": 10,
+    "VLM-043--champagne": 15,
+    "VLM-047--champagne": 20,
+    "VLM-048--emerald": 25
+  }
+}

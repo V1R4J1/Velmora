@@ -1,0 +1,18 @@
+{% from "macros.html" import image_sources %}
+{% extends "base.html" %}
+{% block title %}Your bag | Velmora{% endblock %}
+{% block main_class %}container bag-page{% endblock %}
+{% block content %}
+<h1>Your bag</h1>
+{% if items %}
+<div class="bag-layout"><div class="bag-items">
+{% for index, item in items %}
+<article class="bag-item">
+  {% if item and item.image %}<img src="{{ url_for('static', filename=item.image) }}" {{ image_sources(item.image, "90px") }} alt="{{ item.product.name }} in {{ item.colour_label }}" width="90" height="114">{% else %}<span class="bag-image-placeholder" aria-hidden="true">V</span>{% endif %}
+  <div>{% if item %}<a href="{{ url_for('product_detail', product_id=item.product.id, colour=item.selection.colour_id, size=item.selection.selected_size) }}"><h2>{{ item.product.name }}</h2></a><p>{{ item.colour_label }} · {{ item.selection.selected_size }} · Quantity {{ item.selection.quantity }}</p><p>{% if item.available %}{{ 'In stock' if item.availability == 'in_stock' else 'Made to order' }}{% else %}This colourway is currently unavailable. Please remove it or choose another colour.{% endif %}</p><span>£{{ item.price_gbp }}</span>{% else %}<h2>Unavailable selection</h2><p>This piece is no longer in the catalogue. Please remove it from your bag.</p>{% endif %}
+  <form method="post" action="{{ url_for('shopping.remove_from_bag') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="index" value="{{ index }}"><button type="submit">Remove</button></form></div>
+</article>
+{% endfor %}
+</div><aside class="bag-summary"><p>Subtotal <span>£{{ total }}</span></p><p>Ordinary catalogue prices. Demo preview discounts do not apply in your bag. Delivery is not included.</p><p>Online checkout is not available yet. Your selected colours and sizes are saved in this bag.</p><a class="button-secondary" href="{{ url_for('catalogue') }}">Continue exploring <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a></aside></div>
+{% else %}<p class="bag-empty">Your next occasion starts here.</p><a class="button-secondary" href="{{ url_for('catalogue') }}">Explore the collection <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a>{% endif %}
+{% endblock %}

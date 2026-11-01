@@ -1,0 +1,17 @@
+# Local Python environment and generated files.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+instance/
+
+# Machine-specific files and local configuration.
+.DS_Store
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
